@@ -5,29 +5,54 @@ using UnityEngine;
 public class BasicMecanic : MonoBehaviour
 {
 
-    public Rigidbody2D pivot1;
-    public Rigidbody2D pivot2;
+    public GameObject ancors;
+    public float gravityAir;
+    public float gravityRope;
+    public float factorX;
+    public float factorY;
+
+    private HingeJoint2D HJoint;
+    private bool spieder = false;
+    private Rigidbody2D rigidBody;
 
     // Start is called before the first frame update
-    void  Start()
+    void Start()
     {
-        
+        HJoint = gameObject.GetComponent<HingeJoint2D>();
+        rigidBody = gameObject.GetComponent<Rigidbody2D>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if( Input.GetKeyDown(KeyCode.Space))
+        int bestPosition = 0;
+        float bestDistance = float.MaxValue;
+        for(int i = 0; i < ancors.transform.childCount; ++i)
         {
-            if (gameObject.GetComponent<HingeJoint2D>().connectedBody.Equals(pivot1))
+            float actualDistance = Vector2.Distance(gameObject.transform.position, ancors.transform.GetChild(i).transform.position);
+            if(actualDistance < bestDistance)
             {
-                gameObject.GetComponent<HingeJoint2D>().connectedBody = pivot2;
+                bestPosition = i;
+                bestDistance = actualDistance;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!spieder)
+            {
+                HJoint.enabled = true;
+                rigidBody.gravityScale = gravityRope;
+                HJoint.connectedBody = ancors.transform.GetChild(bestPosition).gameObject.GetComponent<Rigidbody2D>();
+
             }
             else
             {
-                gameObject.GetComponent<HingeJoint2D>().connectedBody = pivot1;
+                rigidBody.velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x * factorX , gameObject.GetComponent<Rigidbody2D>().velocity.y + factorY) ;
+                rigidBody.gravityScale = gravityAir;
+                HJoint.enabled = false;
             }
+            spieder = !spieder;
         }
     }
 }
