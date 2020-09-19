@@ -17,6 +17,7 @@ public class BasicMecanic : MonoBehaviour
     private LineRenderer lineRenderer;
     private Vector2 positionActualJoint;
     private int lastBestPositionJoint;
+    private int lastBestPositionSelected;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class BasicMecanic : MonoBehaviour
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
         lineRenderer = gameObject.GetComponent<LineRenderer>();
         lastBestPositionJoint = 0;
-
+        lastBestPositionSelected = 0;
     }
 
  
@@ -68,5 +69,12 @@ public class BasicMecanic : MonoBehaviour
             lineRenderer.SetPosition(0, gameObject.transform.position); 
             lineRenderer.SetPosition(1, positionActualJoint);
         }
+       
+        if (lastBestPositionSelected != bestPosition)
+        {
+            ancors.transform.GetChild(lastBestPositionSelected).gameObject.GetComponent<JointBehaviour>().unselected();
+            ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().selected();
+        }
+        lastBestPositionSelected = bestPosition;
     }
 }
