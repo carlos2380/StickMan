@@ -16,7 +16,7 @@ public class BasicMecanic : MonoBehaviour
     private Rigidbody2D rigidBody;
     private LineRenderer lineRenderer;
     private Vector2 positionActualJoint;
-    // Start is called before the first frame update
+
     void Start()
     {
         HJoint = gameObject.GetComponent<HingeJoint2D>();
@@ -25,7 +25,7 @@ public class BasicMecanic : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+ 
     void Update()
     {
         int bestPosition = 0;
