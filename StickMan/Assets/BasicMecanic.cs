@@ -12,14 +12,16 @@ public class BasicMecanic : MonoBehaviour
     public float factorY;
 
     private HingeJoint2D HJoint;
-    private bool spieder = false;
+    private bool sticked = false;
     private Rigidbody2D rigidBody;
-
+    private LineRenderer lineRenderer;
+    private Vector2 positionActualJoint;
     // Start is called before the first frame update
     void Start()
     {
         HJoint = gameObject.GetComponent<HingeJoint2D>();
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
+        lineRenderer = gameObject.GetComponent<LineRenderer>();
 
     }
 
@@ -39,20 +41,29 @@ public class BasicMecanic : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!spieder)
+            if (!sticked)
             {
+                lineRenderer.enabled = true;
                 HJoint.enabled = true;
                 rigidBody.gravityScale = gravityRope;
                 HJoint.connectedBody = ancors.transform.GetChild(bestPosition).gameObject.GetComponent<Rigidbody2D>();
+                positionActualJoint = ancors.transform.GetChild(bestPosition).gameObject.transform.position;
+
 
             }
             else
-            {
+            {                
                 rigidBody.velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x * factorX , gameObject.GetComponent<Rigidbody2D>().velocity.y + factorY) ;
                 rigidBody.gravityScale = gravityAir;
                 HJoint.enabled = false;
+                lineRenderer.enabled = false;
             }
-            spieder = !spieder;
+            sticked = !sticked;
+        }
+        if (sticked)
+        {
+            lineRenderer.SetPosition(0, gameObject.transform.position); 
+            lineRenderer.SetPosition(1, positionActualJoint);
         }
     }
 }
