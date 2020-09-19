@@ -16,12 +16,14 @@ public class BasicMecanic : MonoBehaviour
     private Rigidbody2D rigidBody;
     private LineRenderer lineRenderer;
     private Vector2 positionActualJoint;
+    private int lastBestPositionJoint;
 
     void Start()
     {
         HJoint = gameObject.GetComponent<HingeJoint2D>();
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
         lineRenderer = gameObject.GetComponent<LineRenderer>();
+        lastBestPositionJoint = 0;
 
     }
 
@@ -48,11 +50,12 @@ public class BasicMecanic : MonoBehaviour
                 rigidBody.gravityScale = gravityRope;
                 HJoint.connectedBody = ancors.transform.GetChild(bestPosition).transform.GetChild(0).gameObject.GetComponent<Rigidbody2D>();
                 positionActualJoint = ancors.transform.GetChild(bestPosition).gameObject.transform.position;
-
-
+                ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().setSticked();
+                lastBestPositionJoint = bestPosition;
             }
             else
-            {                
+            {
+                ancors.transform.GetChild(lastBestPositionJoint).gameObject.GetComponent<JointBehaviour>().setUnsticked();
                 rigidBody.velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x * factorX , gameObject.GetComponent<Rigidbody2D>().velocity.y + factorY) ;
                 rigidBody.gravityScale = gravityAir;
                 HJoint.enabled = false;
