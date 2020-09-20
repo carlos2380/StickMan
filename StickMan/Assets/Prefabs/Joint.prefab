@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 3782218581732038543}
   - component: {fileID: 3782218581732038540}
   - component: {fileID: 5537083636961123258}
+  - component: {fileID: 813516928146384783}
   m_Layer: 0
   m_Name: Joint
   m_TagString: Untagged
@@ -227,24 +228,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteUnsticked: {fileID: 21300000, guid: f73cec29dba711546b4d97652cf0dffb, type: 3}
   spriteSticked: {fileID: 21300000, guid: 988104f8a84a929489f00f99c11e100d, type: 3}
-  timeAnim: 0.3
+  timeAnim: 0.1
   scaleCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 4.6632404
-      outSlope: 4.6632404
+      inSlope: 14.725267
+      outSlope: 14.725267
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.3377009
-      value: 1.5747806
-      inSlope: 4.6632404
-      outSlope: 4.6632404
+      time: 0.10391483
+      value: 1.5301737
+      inSlope: 14.725267
+      outSlope: 14.725267
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -252,3 +253,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &813516928146384783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3782218581732038542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e16381c271a0b48b69b8b1f75d05a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShadowMaterial: {fileID: 2100000, guid: 8c35a57716513d04794bda5c23c2486f, type: 2}
+  ShadowOffset: {x: 0, y: -0.38}
+  isDynamic: 0
+  maxOffset: 0

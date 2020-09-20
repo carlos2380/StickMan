@@ -11,6 +11,10 @@ GameObject:
   - component: {fileID: 3489099374361870763}
   - component: {fileID: 3489099374361870760}
   - component: {fileID: 3489099374361870762}
+  - component: {fileID: 773010633}
+  - component: {fileID: 773010634}
+  - component: {fileID: 773010629}
+  - component: {fileID: 773010632}
   m_Layer: 0
   m_Name: Mat
   m_TagString: Untagged
@@ -93,6 +97,69 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0052051605, y: 0.03356475}
-  m_Size: {x: 1.1488533, y: 0.554194}
+  m_Offset: {x: 0.019596806, y: -0.0011198743}
+  m_Size: {x: 3.601121, y: 0.8891174}
   m_Direction: 1
+--- !u!70 &773010633
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3489099374361870761}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 1d06b3ab6e3844c49a4d5c56a72dbb30, type: 2}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.019596806, y: -0.0011198743}
+  m_Size: {x: 3.701121, y: 0.9891174}
+  m_Direction: 1
+--- !u!95 &773010634
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3489099374361870761}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 33be5c2f01e71664ab3f51d99b770244, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &773010629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3489099374361870761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e16381c271a0b48b69b8b1f75d05a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShadowMaterial: {fileID: 2100000, guid: 8c35a57716513d04794bda5c23c2486f, type: 2}
+  ShadowOffset: {x: 0, y: -0.17}
+  isDynamic: 0
+  maxOffset: 0
+--- !u!114 &773010632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3489099374361870761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a14084bb961ce33489fef0e0044076f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

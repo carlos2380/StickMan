@@ -343,59 +343,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1346301979}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &773010628 stripped
+--- !u!1 &771221665 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3489099374361870761, guid: 1670e59ce46c3d84f927d526e3cef8ff,
+  m_CorrespondingSourceObject: {fileID: 3782218581732038542, guid: bff86a3d8fb4924459a7da705e7aa48e,
     type: 3}
-  m_PrefabInstance: {fileID: 3489099374799336813}
+  m_PrefabInstance: {fileID: 3782218581920467574}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &773010632
+--- !u!114 &771221668
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773010628}
+  m_GameObject: {fileID: 771221665}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a14084bb961ce33489fef0e0044076f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 84e16381c271a0b48b69b8b1f75d05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!70 &773010633
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773010628}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 1d06b3ab6e3844c49a4d5c56a72dbb30, type: 2}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.019596806, y: -0.0011198743}
-  m_Size: {x: 3.701121, y: 0.9891174}
-  m_Direction: 1
---- !u!95 &773010634
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773010628}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 33be5c2f01e71664ab3f51d99b770244, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  ShadowMaterial: {fileID: 2100000, guid: 8c35a57716513d04794bda5c23c2486f, type: 2}
+  ShadowOffset: {x: 0, y: -0.17}
+  isDynamic: 1
+  maxOffset: 0
 --- !u!1001 &1346301979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -462,41 +431,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5537083636961123258, guid: bff86a3d8fb4924459a7da705e7aa48e,
-        type: 3}
-      propertyPath: timeAnim
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5537083636961123258, guid: bff86a3d8fb4924459a7da705e7aa48e,
-        type: 3}
-      propertyPath: scaleCurve.m_Curve.Array.data[0].inSlope
-      value: 14.725267
-      objectReference: {fileID: 0}
-    - target: {fileID: 5537083636961123258, guid: bff86a3d8fb4924459a7da705e7aa48e,
-        type: 3}
-      propertyPath: scaleCurve.m_Curve.Array.data[0].outSlope
-      value: 14.725267
-      objectReference: {fileID: 0}
-    - target: {fileID: 5537083636961123258, guid: bff86a3d8fb4924459a7da705e7aa48e,
-        type: 3}
-      propertyPath: scaleCurve.m_Curve.Array.data[1].time
-      value: 0.10391483
-      objectReference: {fileID: 0}
-    - target: {fileID: 5537083636961123258, guid: bff86a3d8fb4924459a7da705e7aa48e,
-        type: 3}
-      propertyPath: scaleCurve.m_Curve.Array.data[1].inSlope
-      value: 14.725267
-      objectReference: {fileID: 0}
-    - target: {fileID: 5537083636961123258, guid: bff86a3d8fb4924459a7da705e7aa48e,
-        type: 3}
-      propertyPath: scaleCurve.m_Curve.Array.data[1].outSlope
-      value: 14.725267
-      objectReference: {fileID: 0}
-    - target: {fileID: 5537083636961123258, guid: bff86a3d8fb4924459a7da705e7aa48e,
-        type: 3}
-      propertyPath: scaleCurve.m_Curve.Array.data[1].value
-      value: 1.5301737
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bff86a3d8fb4924459a7da705e7aa48e, type: 3}
@@ -774,41 +708,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3489099374361870763, guid: 1670e59ce46c3d84f927d526e3cef8ff,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3489099374361870763, guid: 1670e59ce46c3d84f927d526e3cef8ff,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3489099374361870762, guid: 1670e59ce46c3d84f927d526e3cef8ff,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: 0.019596806
-      objectReference: {fileID: 0}
-    - target: {fileID: 3489099374361870762, guid: 1670e59ce46c3d84f927d526e3cef8ff,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -0.0011198743
-      objectReference: {fileID: 0}
-    - target: {fileID: 3489099374361870762, guid: 1670e59ce46c3d84f927d526e3cef8ff,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 3.601121
-      objectReference: {fileID: 0}
-    - target: {fileID: 3489099374361870762, guid: 1670e59ce46c3d84f927d526e3cef8ff,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.8891174
-      objectReference: {fileID: 0}
-    - target: {fileID: 3489099374361870762, guid: 1670e59ce46c3d84f927d526e3cef8ff,
-        type: 3}
-      propertyPath: m_UsedByEffector
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1670e59ce46c3d84f927d526e3cef8ff, type: 3}
 --- !u!1001 &3782218581920467574
@@ -920,6 +819,11 @@ PrefabInstance:
     - target: {fileID: 1275907208, guid: bff86a3d8fb4924459a7da705e7aa48e, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 813516928146384783, guid: bff86a3d8fb4924459a7da705e7aa48e,
+        type: 3}
+      propertyPath: isDynamic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bff86a3d8fb4924459a7da705e7aa48e, type: 3}
