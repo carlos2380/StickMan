@@ -198,6 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1491832083}
+  speed: 0.2
+  MaxOffset: 1.2
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -529,7 +531,7 @@ PrefabInstance:
     - target: {fileID: 1188814802862851432, guid: 8c12773957bf69f4da681b14f08071e5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 1188814802862851432, guid: 8c12773957bf69f4da681b14f08071e5,
         type: 3}
