@@ -505,6 +505,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 1d10c12c23e1f8a4699392d8c1bce738,
         type: 3}
+    - target: {fileID: 1188814802862851434, guid: 8c12773957bf69f4da681b14f08071e5,
+        type: 3}
+      propertyPath: stickedGoSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e5fa2e4c1b9a24f4e80cc350c126ddb9,
+        type: 3}
+    - target: {fileID: 1188814802862851434, guid: 8c12773957bf69f4da681b14f08071e5,
+        type: 3}
+      propertyPath: stickedBackSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5719ffa4ca10ead4fb1dbb0bea7e0d7c,
+        type: 3}
+    - target: {fileID: 1188814802862851434, guid: 8c12773957bf69f4da681b14f08071e5,
+        type: 3}
+      propertyPath: test
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 1188814802862851429, guid: 8c12773957bf69f4da681b14f08071e5,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value

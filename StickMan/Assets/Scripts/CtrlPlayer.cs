@@ -13,6 +13,8 @@ public class CtrlPlayer : MonoBehaviour
     [Header("Sprites player")]
     public Sprite ballSprite;
     public Sprite stickedStopedSprite;
+    public Sprite stickedGoSprite;
+    public Sprite stickedBackSprite;
 
     private HingeJoint2D hingeJoint;
     private Rigidbody2D rigidBody;
@@ -57,9 +59,7 @@ public class CtrlPlayer : MonoBehaviour
         {
             lineRenderer.SetPosition(0, gameObject.transform.position); 
             lineRenderer.SetPosition(1, positionActualJoint);
-
-            gameObject.transform.eulerAngles = new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, Vector2.SignedAngle(Vector2.up, positionActualJoint - gameObject.transform.position)) ;
-
+            printPlayer();
         }
        
         if (lastBestPositionSelected != bestPosition)
@@ -84,9 +84,7 @@ public class CtrlPlayer : MonoBehaviour
             positionActualJoint = ancors.transform.GetChild(bestPosition).gameObject.transform.position;
 
             ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().setSticked();
-            ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().unselected();
-
-             spriteRenderer.sprite = stickedStopedSprite                                 ;
+            ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().unselected();                  ;
 
             lastBestPositionJoint = bestPosition;
 
@@ -112,5 +110,33 @@ public class CtrlPlayer : MonoBehaviour
             rigidBody.AddTorque(-rigidBody.velocity.magnitude);
             sticked = !sticked;
         }
+    }
+
+    private void printPlayer()
+    {
+        if (rigidBody.velocity.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }else
+        {
+            spriteRenderer.flipX = true;
+        }
+
+        if (rigidBody.velocity.x < 0.7f && rigidBody.velocity.x > -0.7f && gameObject.transform.position.y < positionActualJoint.y)
+        {
+            spriteRenderer.sprite = stickedStopedSprite;
+        }
+        else
+        {
+            if (rigidBody.velocity.y < 0)
+            {
+                spriteRenderer.sprite = stickedGoSprite;
+            }
+            else
+            {
+                spriteRenderer.sprite = stickedBackSprite;
+            }
+        }
+        gameObject.transform.eulerAngles = new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, Vector2.SignedAngle(Vector2.up, positionActualJoint - gameObject.transform.position));
     }
 }
