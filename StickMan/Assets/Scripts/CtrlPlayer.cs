@@ -58,7 +58,7 @@ public class CtrlPlayer : MonoBehaviour
         if (sticked)
         {
             lineRenderer.SetPosition(0, gameObject.transform.position); 
-            lineRenderer.SetPosition(1, positionActualJoint);
+            lineRenderer.SetPosition(1, positionActualJoint + new Vector3(0, 0, 1));
             printPlayer();
         }
        

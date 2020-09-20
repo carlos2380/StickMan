@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1491832083}
-  speed: 0.2
+  speed: 0.3
   MaxOffset: 1.2
 --- !u!20 &519420031
 Camera:
@@ -669,6 +669,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GravityScale
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188814802862851428, guid: 8c12773957bf69f4da681b14f08071e5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ef209b70d99de464a97c500ee8b4f147, type: 2}
+    - target: {fileID: 1188814802862851428, guid: 8c12773957bf69f4da681b14f08071e5,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.015753798
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188814802862851428, guid: 8c12773957bf69f4da681b14f08071e5,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188814802862851428, guid: 8c12773957bf69f4da681b14f08071e5,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188814802862851428, guid: 8c12773957bf69f4da681b14f08071e5,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188814802862851428, guid: 8c12773957bf69f4da681b14f08071e5,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188814802862851428, guid: 8c12773957bf69f4da681b14f08071e5,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c12773957bf69f4da681b14f08071e5, type: 3}
