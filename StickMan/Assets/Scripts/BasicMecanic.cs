@@ -26,6 +26,7 @@ public class BasicMecanic : MonoBehaviour
         lineRenderer = gameObject.GetComponent<LineRenderer>();
         lastBestPositionJoint = 0;
         lastBestPositionSelected = 0;
+        ancors.transform.GetChild(lastBestPositionSelected).gameObject.GetComponent<JointBehaviour>().selected();
     }
 
  
@@ -53,6 +54,8 @@ public class BasicMecanic : MonoBehaviour
                 positionActualJoint = ancors.transform.GetChild(bestPosition).gameObject.transform.position;
                 ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().setSticked();
                 lastBestPositionJoint = bestPosition;
+                lastBestPositionSelected = bestPosition;
+                ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().unselected();
             }
             else
             {
@@ -61,6 +64,10 @@ public class BasicMecanic : MonoBehaviour
                 rigidBody.gravityScale = gravityAir;
                 HJoint.enabled = false;
                 lineRenderer.enabled = false;
+                if (lastBestPositionSelected == bestPosition)
+                {
+                    ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().selected();
+                }
             }
             sticked = !sticked;
         }

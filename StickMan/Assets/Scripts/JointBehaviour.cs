@@ -41,6 +41,9 @@ public class JointBehaviour : MonoBehaviour
         if(!sticked)
         {
             StartCoroutine(selectingJoint());
+        }else
+        {
+           lineSelector.transform.localScale = Vector3.zero;
         }
     }
 
