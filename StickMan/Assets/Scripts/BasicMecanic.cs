@@ -11,17 +11,19 @@ public class BasicMecanic : MonoBehaviour
     public float factorX;
     public float factorY;
 
-    private HingeJoint2D HJoint;
+    private HingeJoint2D hingeJoint;
     private bool sticked = false;
     private Rigidbody2D rigidBody;
     private LineRenderer lineRenderer;
     private Vector2 positionActualJoint;
     private int lastBestPositionJoint;
     private int lastBestPositionSelected;
+    private int bestPosition;
+    private float bestDistance;
 
     void Start()
     {
-        HJoint = gameObject.GetComponent<HingeJoint2D>();
+        hingeJoint = gameObject.GetComponent<HingeJoint2D>();
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
         lineRenderer = gameObject.GetComponent<LineRenderer>();
         lastBestPositionJoint = 0;
@@ -29,11 +31,10 @@ public class BasicMecanic : MonoBehaviour
         ancors.transform.GetChild(lastBestPositionSelected).gameObject.GetComponent<JointBehaviour>().selected();
     }
 
- 
     void Update()
     {
-        int bestPosition = 0;
-        float bestDistance = float.MaxValue;
+        bestPosition = 0;
+        bestDistance = float.MaxValue;
         for(int i = 0; i < ancors.transform.childCount; ++i)
         {
             float actualDistance = Vector2.Distance(gameObject.transform.position, ancors.transform.GetChild(i).transform.position);
@@ -43,34 +44,9 @@ public class BasicMecanic : MonoBehaviour
                 bestDistance = actualDistance;
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (!sticked)
-            {
-                lineRenderer.enabled = true;
-                HJoint.enabled = true;
-                rigidBody.gravityScale = gravityRope;
-                HJoint.connectedBody = ancors.transform.GetChild(bestPosition).transform.GetChild(0).gameObject.GetComponent<Rigidbody2D>();
-                positionActualJoint = ancors.transform.GetChild(bestPosition).gameObject.transform.position;
-                ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().setSticked();
-                lastBestPositionJoint = bestPosition;
-                lastBestPositionSelected = bestPosition;
-                ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().unselected();
-            }
-            else
-            {
-                ancors.transform.GetChild(lastBestPositionJoint).gameObject.GetComponent<JointBehaviour>().setUnsticked();
-                rigidBody.velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x * factorX , gameObject.GetComponent<Rigidbody2D>().velocity.y + factorY) ;
-                rigidBody.gravityScale = gravityAir;
-                HJoint.enabled = false;
-                lineRenderer.enabled = false;
-                if (lastBestPositionSelected == bestPosition)
-                {
-                    ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().selected();
-                }
-            }
-            sticked = !sticked;
-        }
+
+        checkInput();
+
         if (sticked)
         {
             lineRenderer.SetPosition(0, gameObject.transform.position); 
@@ -83,5 +59,42 @@ public class BasicMecanic : MonoBehaviour
             ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().selected();
         }
         lastBestPositionSelected = bestPosition;
+    }
+
+    private void checkInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+            lineRenderer.enabled = true;
+            hingeJoint.enabled = true;
+
+            rigidBody.gravityScale = gravityRope;
+
+            hingeJoint.connectedBody = ancors.transform.GetChild(bestPosition).transform.GetChild(0).gameObject.GetComponent<Rigidbody2D>();
+            positionActualJoint = ancors.transform.GetChild(bestPosition).gameObject.transform.position;
+
+            ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().setSticked();
+            ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().unselected();
+
+            lastBestPositionJoint = bestPosition;
+            sticked = !sticked;
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            hingeJoint.enabled = false;
+            lineRenderer.enabled = false;
+
+            rigidBody.velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x * factorX, gameObject.GetComponent<Rigidbody2D>().velocity.y + factorY);
+            rigidBody.gravityScale = gravityAir;
+
+            ancors.transform.GetChild(lastBestPositionJoint).gameObject.GetComponent<JointBehaviour>().setUnsticked();
+            if (bestPosition == lastBestPositionJoint)
+            {
+                ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().selected();
+                ancors.transform.GetChild(lastBestPositionSelected).gameObject.GetComponent<JointBehaviour>().unselected();
+            }
+            sticked = !sticked;
+        }
     }
 }
