@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicMecanic : MonoBehaviour
+public class CtrlPlayer : MonoBehaviour
 {
 
     public GameObject ancors;
@@ -10,12 +10,16 @@ public class BasicMecanic : MonoBehaviour
     public float gravityRope;
     public float factorX;
     public float factorY;
+    [Header("Sprites player")]
+    public Sprite ballSprite;
+    public Sprite stickedStopedSprite;
 
     private HingeJoint2D hingeJoint;
-    private bool sticked = false;
     private Rigidbody2D rigidBody;
     private LineRenderer lineRenderer;
-    private Vector2 positionActualJoint;
+    private SpriteRenderer spriteRenderer;
+    private Vector3 positionActualJoint;
+    private bool sticked;
     private int lastBestPositionJoint;
     private int lastBestPositionSelected;
     private int bestPosition;
@@ -26,6 +30,8 @@ public class BasicMecanic : MonoBehaviour
         hingeJoint = gameObject.GetComponent<HingeJoint2D>();
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
         lineRenderer = gameObject.GetComponent<LineRenderer>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        sticked = false;
         lastBestPositionJoint = 0;
         lastBestPositionSelected = 0;
         ancors.transform.GetChild(lastBestPositionSelected).gameObject.GetComponent<JointBehaviour>().selected();
@@ -51,6 +57,9 @@ public class BasicMecanic : MonoBehaviour
         {
             lineRenderer.SetPosition(0, gameObject.transform.position); 
             lineRenderer.SetPosition(1, positionActualJoint);
+
+            gameObject.transform.eulerAngles = new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, Vector2.SignedAngle(Vector2.up, positionActualJoint - gameObject.transform.position)) ;
+
         }
        
         if (lastBestPositionSelected != bestPosition)
@@ -77,7 +86,11 @@ public class BasicMecanic : MonoBehaviour
             ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().setSticked();
             ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().unselected();
 
+             spriteRenderer.sprite = stickedStopedSprite                                 ;
+
             lastBestPositionJoint = bestPosition;
+
+            rigidBody.angularVelocity = 0f;
             sticked = !sticked;
         }
         if (Input.GetKeyUp(KeyCode.Space))
@@ -94,6 +107,9 @@ public class BasicMecanic : MonoBehaviour
                 ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().selected();
                 ancors.transform.GetChild(lastBestPositionSelected).gameObject.GetComponent<JointBehaviour>().unselected();
             }
+
+            spriteRenderer.sprite = ballSprite;
+            rigidBody.AddTorque(-rigidBody.velocity.magnitude);
             sticked = !sticked;
         }
     }
