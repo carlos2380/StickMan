@@ -16,7 +16,7 @@ public class CtrlPlayer : MonoBehaviour
     public Sprite stickedGoSprite;
     public Sprite stickedBackSprite;
 
-    private HingeJoint2D hingeJoint;
+    private HingeJoint2D hJoint;
     private Rigidbody2D rigidBody;
     private LineRenderer lineRenderer;
     private SpriteRenderer spriteRenderer;
@@ -29,7 +29,7 @@ public class CtrlPlayer : MonoBehaviour
 
     void Start()
     {
-        hingeJoint = gameObject.GetComponent<HingeJoint2D>();
+        hJoint = gameObject.GetComponent<HingeJoint2D>();
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
         lineRenderer = gameObject.GetComponent<LineRenderer>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -76,11 +76,11 @@ public class CtrlPlayer : MonoBehaviour
         {
 
             lineRenderer.enabled = true;
-            hingeJoint.enabled = true;
+            hJoint.enabled = true;
 
             rigidBody.gravityScale = gravityRope;
 
-            hingeJoint.connectedBody = ancors.transform.GetChild(bestPosition).transform.GetChild(0).gameObject.GetComponent<Rigidbody2D>();
+            hJoint.connectedBody = ancors.transform.GetChild(bestPosition).transform.GetChild(0).gameObject.GetComponent<Rigidbody2D>();
             positionActualJoint = ancors.transform.GetChild(bestPosition).gameObject.transform.position;
 
             ancors.transform.GetChild(bestPosition).gameObject.GetComponent<JointBehaviour>().setSticked();
@@ -93,7 +93,7 @@ public class CtrlPlayer : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            hingeJoint.enabled = false;
+            hJoint.enabled = false;
             lineRenderer.enabled = false;
 
             rigidBody.velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x * factorX, gameObject.GetComponent<Rigidbody2D>().velocity.y + factorY);

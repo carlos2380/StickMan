@@ -266,6 +266,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShadowMaterial: {fileID: 2100000, guid: 8c35a57716513d04794bda5c23c2486f, type: 2}
-  ShadowOffset: {x: 0, y: -0.38}
-  isDynamic: 0
-  maxOffset: 0
+  ShadowOffset: {x: 0, y: -0.07}

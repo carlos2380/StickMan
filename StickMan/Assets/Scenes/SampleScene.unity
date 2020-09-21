@@ -200,6 +200,7 @@ MonoBehaviour:
   player: {fileID: 1491832083}
   speed: 0.3
   MaxOffset: 1.2
+  offset: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -343,28 +344,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1346301979}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &771221665 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3782218581732038542, guid: bff86a3d8fb4924459a7da705e7aa48e,
-    type: 3}
-  m_PrefabInstance: {fileID: 3782218581920467574}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &771221668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 771221665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84e16381c271a0b48b69b8b1f75d05a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShadowMaterial: {fileID: 2100000, guid: 8c35a57716513d04794bda5c23c2486f, type: 2}
-  ShadowOffset: {x: 0, y: -0.17}
-  isDynamic: 1
-  maxOffset: 0
 --- !u!1001 &1346301979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -440,6 +419,23 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1188814803285404253}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1491832092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491832083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c8f4112a4ebe4746b50d8ea6a82a136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShadowMaterial: {fileID: 2100000, guid: 5de9ee8c8776fd747be20f029ba55544, type: 2}
+  ShadowOffset: {x: 0, y: -0.07}
+  isDynamic: 1
+  maxOffset: 0.1
+  ctrlCamera: {fileID: 519420030}
 --- !u!1001 &1188814803285404253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -824,6 +820,11 @@ PrefabInstance:
         type: 3}
       propertyPath: isDynamic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 813516928146384783, guid: bff86a3d8fb4924459a7da705e7aa48e,
+        type: 3}
+      propertyPath: ShadowOffset.y
+      value: -0.07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bff86a3d8fb4924459a7da705e7aa48e, type: 3}

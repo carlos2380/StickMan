@@ -8,7 +8,8 @@ public class CtrlCamera : MonoBehaviour
     public float speed;
     public float MaxOffset;
 
-    private float offset;
+    [HideInInspector]
+    public float offset;
 
     private Rigidbody2D playerRigidbody;
 
