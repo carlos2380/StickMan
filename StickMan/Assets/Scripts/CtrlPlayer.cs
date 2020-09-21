@@ -146,7 +146,7 @@ public class CtrlPlayer : MonoBehaviour
             }
         }
         
-        gameObject.transform.eulerAngles = LookAt2d(positionActualJoint);
+        gameObject.transform.eulerAngles = LookAt2d(positionActualJoint - gameObject.transform.position);
     }
 
     public bool getSticked()
@@ -157,12 +157,12 @@ public class CtrlPlayer : MonoBehaviour
     public void win(float speedWin)
     {
         won = true;
+        spriteRenderer.flipX = false;
         rigidBody.gravityScale = 0;
         gameObject.transform.eulerAngles = LookAt2d(rigidBody.velocity);
         rigidBody.velocity = rigidBody.velocity.normalized*speedWin;
         rigidBody.angularVelocity = 0f;
         spriteRenderer.sprite = winSprite;
-        spriteRenderer.flipX = false;
     }
 
     public void reset(Vector3 initPosition)
@@ -176,6 +176,6 @@ public class CtrlPlayer : MonoBehaviour
 
     public Vector3 LookAt2d (Vector3 vec)
     {
-        return new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, Vector2.SignedAngle(Vector2.up, vec - gameObject.transform.position));
+        return new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, Vector2.SignedAngle(Vector2.up, vec));
     }
 }
