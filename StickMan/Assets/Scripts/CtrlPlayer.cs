@@ -27,7 +27,8 @@ public class CtrlPlayer : MonoBehaviour
     private int lastBestPositionSelected;
     private int bestPosition;
     private float bestDistance;
-
+    private bool won;
+    private int touches;
     void Start()
     {
         hJoint = gameObject.GetComponent<HingeJoint2D>();
@@ -38,6 +39,8 @@ public class CtrlPlayer : MonoBehaviour
         lastBestPositionJoint = 0;
         lastBestPositionSelected = 0;
         ancors.transform.GetChild(lastBestPositionSelected).gameObject.GetComponent<JointBehaviour>().selected();
+        won = false;
+        touches = 0;
     }
 
     void Update()
@@ -54,7 +57,10 @@ public class CtrlPlayer : MonoBehaviour
             }
         }
 
-        checkInput();
+        if(!won)
+        {
+            checkInput();
+        }
 
         if (sticked)
         {
@@ -73,9 +79,9 @@ public class CtrlPlayer : MonoBehaviour
 
     private void checkInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || ((Input.touchCount > 0) && (touches == 0)))
         {
-
+            
             lineRenderer.enabled = true;
             hJoint.enabled = true;
 
@@ -92,7 +98,7 @@ public class CtrlPlayer : MonoBehaviour
             rigidBody.angularVelocity = 0f;
             sticked = !sticked;
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space) || ((Input.touchCount == 0) && (touches > 0)))
         {
             hJoint.enabled = false;
             lineRenderer.enabled = false;
@@ -111,6 +117,7 @@ public class CtrlPlayer : MonoBehaviour
             rigidBody.AddTorque(-rigidBody.velocity.magnitude);
             sticked = !sticked;
         }
+        touches = Input.touchCount;
     }
 
     private void printPlayer()
@@ -149,12 +156,13 @@ public class CtrlPlayer : MonoBehaviour
 
     public void win(float speedWin)
     {
-        spriteRenderer.sprite = winSprite;
-        spriteRenderer.flipX = false;
+        won = true;
         rigidBody.gravityScale = 0;
         gameObject.transform.eulerAngles = LookAt2d(rigidBody.velocity);
-        rigidBody.velocity = Vector2.ClampMagnitude(rigidBody.velocity, speedWin);
+        rigidBody.velocity = rigidBody.velocity.normalized*speedWin;
         rigidBody.angularVelocity = 0f;
+        spriteRenderer.sprite = winSprite;
+        spriteRenderer.flipX = false;
     }
 
     public void reset(Vector3 initPosition)

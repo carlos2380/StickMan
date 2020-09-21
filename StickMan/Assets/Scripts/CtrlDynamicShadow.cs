@@ -7,7 +7,7 @@ public class CtrlDynamicShadow : CtrlShadow
 {
 
     public bool isDynamic;
-    [HideInInspector]
+    //[HideInInspector]
     public float maxOffset;
     public CtrlCamera ctrlCamera;
 
@@ -17,18 +17,18 @@ public class CtrlDynamicShadow : CtrlShadow
         {
             shadowSpriteRenderer.sprite = spriteRenderer.sprite;
             shadowSpriteRenderer.flipX = spriteRenderer.flipX;
-            float offset = 0;
-            if (ctrlCamera.offset != 0)
+            float offset = 0.1f;
+            if (ctrlCamera.MaxOffset != 0)
             {
                 offset = (ctrlCamera.offset / ctrlCamera.MaxOffset) * (maxOffset * 100);
                 offset /= 100;
             }
-            shadowGameobject.transform.position = gameObject.transform.position + (Vector3)ShadowOffset + new Vector3(-offset, 0f, 0f);
+            shadowGameobject.transform.position = gameObject.transform.position + new Vector3(ShadowOffset.x, ShadowOffset.y) + new Vector3(-offset, 0f, 0f);
         }
     }
 }
 
-[CustomEditor(typeof(CtrlDynamicShadow))]
+/*[CustomEditor(typeof(CtrlDynamicShadow))]
 public class MyScriptEditor : Editor
 {
     public override void OnInspectorGUI()
@@ -41,4 +41,4 @@ public class MyScriptEditor : Editor
             myScript.maxOffset = EditorGUILayout.FloatField("Max Offset", myScript.maxOffset);
         }
     }
-}
+}*/
