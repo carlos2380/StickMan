@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1188814802862851429}
   - component: {fileID: 1188814802862851428}
   - component: {fileID: 1188814802862851431}
+  - component: {fileID: 1491832092}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188814802862851439}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.278, y: 0.62, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
@@ -100,7 +101,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 0.55
+  m_GravityScale: 0.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -147,6 +148,11 @@ MonoBehaviour:
   gravityRope: 2
   factorX: 1.1
   factorY: 1
+  ballSprite: {fileID: 21300000, guid: 368bc1116a10c2a4e86092eb0f9d6295, type: 3}
+  stickedStopedSprite: {fileID: 21300000, guid: 1d10c12c23e1f8a4699392d8c1bce738,
+    type: 3}
+  stickedGoSprite: {fileID: 21300000, guid: e5fa2e4c1b9a24f4e80cc350c126ddb9, type: 3}
+  stickedBackSprite: {fileID: 21300000, guid: 5719ffa4ca10ead4fb1dbb0bea7e0d7c, type: 3}
 --- !u!96 &1188814802862851429
 TrailRenderer:
   serializedVersion: 2
@@ -185,7 +191,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 0.3
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -194,7 +200,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.070863724
+        value: 0.25196078
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -268,7 +274,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef209b70d99de464a97c500ee8b4f147, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -298,8 +304,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.010205432
-        value: 0.007873535
+        time: 0
+        value: 0.015753798
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -359,6 +365,23 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.1}
+  m_Offset: {x: 0, y: 0.005503595}
   serializedVersion: 2
-  m_Radius: 0.21
+  m_Radius: 0.6402236
+--- !u!114 &1491832092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188814802862851439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c8f4112a4ebe4746b50d8ea6a82a136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShadowMaterial: {fileID: 2100000, guid: 5de9ee8c8776fd747be20f029ba55544, type: 2}
+  ShadowOffset: {x: 0, y: -0.07}
+  isDynamic: 1
+  maxOffset: 0.1
+  ctrlCamera: {fileID: 0}

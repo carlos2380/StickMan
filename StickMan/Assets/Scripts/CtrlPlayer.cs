@@ -58,7 +58,7 @@ public class CtrlPlayer : MonoBehaviour
         if (sticked)
         {
             lineRenderer.SetPosition(0, gameObject.transform.position); 
-            lineRenderer.SetPosition(1, positionActualJoint + new Vector3(0, 0, 1));
+            lineRenderer.SetPosition(1, positionActualJoint);
             printPlayer();
         }
        
@@ -138,5 +138,10 @@ public class CtrlPlayer : MonoBehaviour
             }
         }
         gameObject.transform.eulerAngles = new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, Vector2.SignedAngle(Vector2.up, positionActualJoint - gameObject.transform.position));
+    }
+
+    public bool getSticked()
+    {
+        return sticked;
     }
 }
