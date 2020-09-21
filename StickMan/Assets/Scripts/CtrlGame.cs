@@ -9,7 +9,7 @@ public class CtrlGame : MonoBehaviour
     public GameObject player;
     public GameObject particles;
     public float speedOnWin;
-    public Sprite winSprite;
+    public CtrlMenu ctrlMenu;
 
     private Vector3 initPosition;
     private CtrlPlayer ctrlPlayer;
@@ -53,5 +53,12 @@ public class CtrlGame : MonoBehaviour
         particles.SetActive(true);
         particles.transform.parent = null;
         ctrlCamera.win();
+        StartCoroutine(finishLevel());
     }
+
+    IEnumerator finishLevel()
+    {
+        yield return new WaitForSeconds(3);
+        ctrlMenu.goMainMenu();
+    } 
 }

@@ -1086,7 +1086,8 @@ MonoBehaviour:
   player: {fileID: 1491832083}
   particles: {fileID: 1110691708}
   speedOnWin: 0.15
-  winSprite: {fileID: 0}
+  ctrlMenu: {fileID: 6449238996366721588, guid: d4524c98bd6f2d249bc648c92581de2a,
+    type: 3}
 --- !u!4 &1330243362
 Transform:
   m_ObjectHideFlags: 0

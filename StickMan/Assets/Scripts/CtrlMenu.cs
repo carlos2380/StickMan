@@ -6,25 +6,6 @@ using UnityEngine.SceneManagement;
 public class CtrlMenu : MonoBehaviour
 {
 
-    public static CtrlMenu instance = null;
-    AsyncOperation async;
-
-    public bool shouldLoadSceneOne = false;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
-    }
-
     IEnumerator loadLevel(int numScene)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(numScene);
