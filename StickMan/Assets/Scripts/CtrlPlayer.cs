@@ -15,6 +15,7 @@ public class CtrlPlayer : MonoBehaviour
     public Sprite stickedStopedSprite;
     public Sprite stickedGoSprite;
     public Sprite stickedBackSprite;
+    public Sprite winSprite;
 
     private HingeJoint2D hJoint;
     private Rigidbody2D rigidBody;
@@ -137,11 +138,36 @@ public class CtrlPlayer : MonoBehaviour
                 spriteRenderer.sprite = stickedBackSprite;
             }
         }
-        gameObject.transform.eulerAngles = new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, Vector2.SignedAngle(Vector2.up, positionActualJoint - gameObject.transform.position));
+        
+        gameObject.transform.eulerAngles = LookAt2d(positionActualJoint);
     }
 
     public bool getSticked()
     {
         return sticked;
+    }
+
+    public void win(float speedWin)
+    {
+        spriteRenderer.sprite = winSprite;
+        spriteRenderer.flipX = false;
+        rigidBody.gravityScale = 0;
+        gameObject.transform.eulerAngles = LookAt2d(rigidBody.velocity);
+        rigidBody.velocity = Vector2.ClampMagnitude(rigidBody.velocity, speedWin);
+        rigidBody.angularVelocity = 0f;
+    }
+
+    public void reset(Vector3 initPosition)
+    {
+        rigidBody.velocity = Vector2.zero;
+        rigidBody.angularVelocity = 0f;
+        gameObject.transform.position = initPosition;
+        gameObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+    }
+
+
+    public Vector3 LookAt2d (Vector3 vec)
+    {
+        return new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, Vector2.SignedAngle(Vector2.up, vec - gameObject.transform.position));
     }
 }

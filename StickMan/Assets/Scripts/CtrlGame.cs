@@ -7,9 +7,13 @@ public class CtrlGame : MonoBehaviour
     public Transform finishTraform;
     public CtrlCamera ctrlCamera;
     public GameObject player;
-    public Vector3 initPosition;
-    private CtrlPlayer ctrlPlayer;
+    public GameObject particles;
+    public float speedOnWin;
+    public Sprite winSprite;
 
+    private Vector3 initPosition;
+    private CtrlPlayer ctrlPlayer;
+    private bool won;
     void Start()
     {
         ctrlPlayer = player.GetComponent<CtrlPlayer>();
@@ -31,18 +35,23 @@ public class CtrlGame : MonoBehaviour
             }
         }
 
-        if (finishTraform.position.x < player.transform.position.x)
+        if (finishTraform.position.x < player.transform.position.x && !won)
         {
-            //win
+            won = true;
+            win();
         }
     }
 
     public void resetLevel()
     {
-        Rigidbody2D rg2d = player.GetComponent<Rigidbody2D>(); 
-        rg2d.velocity = Vector2.zero;
-        rg2d.angularVelocity = 0f;
-        player.transform.position = initPosition;
-        player.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+        ctrlPlayer.reset(initPosition);
+    }
+
+    public void win()
+    {
+        ctrlPlayer.win(speedOnWin);       
+        particles.SetActive(true);
+        particles.transform.parent = null;
+        ctrlCamera.win();
     }
 }

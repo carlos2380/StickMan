@@ -45,4 +45,12 @@ public class CtrlCamera : MonoBehaviour
         if (nextX > maxX) nextX = maxX;
         gameObject.transform.position = new Vector3(nextX, gameObject.transform.position.y, gameObject.transform.position.z);
     }
+
+    public void win()
+    {
+        MaxOffset = 0;
+        gameObject.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, gameObject.transform.position.z);
+        Camera camera = GetComponent<Camera>();
+        camera.orthographicSize /= 2.5f;
+    }
 }
