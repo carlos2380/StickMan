@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8765487771478438820}
   - component: {fileID: 8765487771478438823}
   - component: {fileID: 8765487771478438822}
+  - component: {fileID: 1870563647}
   m_Layer: 0
   m_Name: Barrier
   m_TagString: Untagged
@@ -96,3 +97,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.99, y: 3.29}
   m_Direction: 0
+--- !u!114 &1870563647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8765487771478438817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e16381c271a0b48b69b8b1f75d05a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShadowMaterial: {fileID: 2100000, guid: 8c35a57716513d04794bda5c23c2486f, type: 2}
+  ShadowOffset: {x: 0, y: -0.07}

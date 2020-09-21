@@ -23,6 +23,7 @@ public class CtrlShadow : MonoBehaviour
 
         shadowGameobject.transform.parent = gameObject.transform;
         shadowGameobject.transform.localScale = Vector3.one;
+        shadowGameobject.transform.rotation = gameObject.transform.rotation;
         shadowGameobject.transform.position = gameObject.transform.position + (Vector3)ShadowOffset;
 
 

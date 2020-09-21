@@ -8,6 +8,8 @@ public class CtrlCamera : MonoBehaviour
     public float speed;
     public float MaxOffset;
 
+    public float minX, maxX;
+
     [HideInInspector]
     public float offset;
 
@@ -38,6 +40,9 @@ public class CtrlCamera : MonoBehaviour
                 offset = -MaxOffset;
             }
         }
-        gameObject.transform.position = new Vector3(player.transform.position.x + offset, gameObject.transform.position.y, gameObject.transform.position.z);
+        float nextX = player.transform.position.x + offset;
+        if (nextX < minX) nextX = minX;
+        if (nextX > maxX) nextX = maxX;
+        gameObject.transform.position = new Vector3(nextX, gameObject.transform.position.y, gameObject.transform.position.z);
     }
 }
